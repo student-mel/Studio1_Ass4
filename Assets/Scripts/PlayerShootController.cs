@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Settings.Input;
 using UnityEngine;
@@ -14,7 +15,9 @@ public class PlayerShootController : MonoBehaviour
     [Header("Projectile Pooling")]
     public BulletBehaviour bulletPrefab;
     [SerializeField] private int poolSize = 30;
-    [SerializeField] private readonly Queue<GameObject> bulletPool = new Queue<GameObject>();
+    [SerializeField] private Queue<GameObject> bulletPool = new Queue<GameObject>();
+    private bool isShooting = false;
+    private float nextFireTime = 0f;
     
     [Header("Debug")]
     public bool debug;
@@ -27,29 +30,63 @@ public class PlayerShootController : MonoBehaviour
 
     private void OnEnable()
     {
-        inputReader.ShootEvent += ShootEvent;
+        inputReader.ShootStartedEvent += ShootEvent;
+        inputReader.ShootStoppedEvent += ShootStopEvent;
         CreatePool();
     }
-
+    
     private void OnDisable()
     {
-        inputReader.ShootEvent -= ShootEvent;
+        inputReader.ShootStartedEvent -= ShootEvent;
+        inputReader.ShootStoppedEvent -= ShootStopEvent;
+        DestroyPool();
     }
     
     private void ShootEvent()
     {
-        SpawnBullet();
+        StartCoroutine(Shoot());
+    }
+    
+    private void ShootStopEvent()
+    {
+        isShooting = false;
+    }
+
+    IEnumerator Shoot()
+    {
+        if (isShooting) yield break;
+        isShooting = true;
+        
+        while (isShooting)
+        {
+            if (Time.time >= nextFireTime)
+            {
+                SpawnBullet();
+                nextFireTime = Time.time + (1f / bulletStats.fireRate);
+            }
+
+            yield return null;
+        }
     }
 
     #region Object Pooling
 
     private void CreatePool()
     {
+        bulletPool = new Queue<GameObject>();
         for (int i = 0; i < poolSize; i++)
         {
             BulletBehaviour bullet = Instantiate(bulletPrefab, transform);
             bullet.AssignBehaviour(this, bulletStats);
             bulletPool.Enqueue(bullet.gameObject);
+        }
+    }
+
+    private void DestroyPool()
+    {
+        for (int i = poolSize - 1; i >= 0; i--)
+        {
+            Destroy(transform.GetChild(i).gameObject);
         }
     }
 
