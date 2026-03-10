@@ -1,5 +1,55 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1548316745944504555
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7384843412729779119}
+  - component: {fileID: 7054708230418239445}
+  m_Layer: 0
+  m_Name: PlayerShooter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7384843412729779119
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548316745944504555}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.18191, y: 3.8846002, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 901610495572198766}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7054708230418239445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548316745944504555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d38c47c37a5bf5d40b82066d89bb4ce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerShootController
+  inputReader: {fileID: 11400000, guid: 9ba615b03f4c80742ab8c91513633e40, type: 2}
+  bulletStats: {fileID: 11400000, guid: df0e8083fd48d3f44b6035f2222e6c77, type: 2}
+  shootOrigin: {fileID: 2722391646813562456}
+  bulletPrefab: {fileID: 5585648676323176555, guid: 31e498adb6cedfc4bb6fe21c9d5210f7, type: 3}
+  poolSize: 30
+  debug: 1
 --- !u!1 &6207657991141205483
 GameObject:
   m_ObjectHideFlags: 0
@@ -41,7 +91,8 @@ GameObject:
   m_Component:
   - component: {fileID: 901610495572198766}
   - component: {fileID: 6397780605840567212}
-  - component: {fileID: 9213102588577761885}
+  - component: {fileID: 4337149962783397866}
+  - component: {fileID: 7645466686592700963}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -63,6 +114,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2722391646813562456}
+  - {fileID: 7384843412729779119}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6397780605840567212
@@ -124,7 +176,34 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &9213102588577761885
+--- !u!50 &4337149962783397866
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8207095367107152535}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &7645466686592700963
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,12 +212,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8207095367107152535}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d38c47c37a5bf5d40b82066d89bb4ce2, type: 3}
+  m_Script: {fileID: 11500000, guid: 1e2bb7b8210c5f443ae4333b4c7c9bfe, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerShootController
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMoveController
   inputReader: {fileID: 11400000, guid: 9ba615b03f4c80742ab8c91513633e40, type: 2}
-  bulletStats: {fileID: 11400000, guid: df0e8083fd48d3f44b6035f2222e6c77, type: 2}
-  shootOrigin: {fileID: 2722391646813562456}
-  bulletPrefab: {fileID: 5585648676323176555, guid: 31e498adb6cedfc4bb6fe21c9d5210f7, type: 3}
-  poolSize: 30
-  debug: 1
+  speed: 5

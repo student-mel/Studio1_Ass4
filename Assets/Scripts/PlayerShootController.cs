@@ -19,6 +19,12 @@ public class PlayerShootController : MonoBehaviour
     [Header("Debug")]
     public bool debug;
 
+    void Awake()
+    {
+        // unparent from player
+        transform.parent =  null;
+    }
+
     private void OnEnable()
     {
         inputReader.ShootEvent += ShootEvent;

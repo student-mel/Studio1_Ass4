@@ -10,6 +10,7 @@ namespace Settings.Input
     {
         private InputSystem_Actions actions;
         public UnityAction ShootEvent;
+        public UnityAction<Vector2> MoveEvent;
 
         private void OnEnable()
         {
@@ -29,6 +30,7 @@ namespace Settings.Input
 
         public void OnMove(InputAction.CallbackContext context)
         {
+            MoveEvent?.Invoke(context.ReadValue<Vector2>());
         }
 
         public void OnShoot(InputAction.CallbackContext context)
