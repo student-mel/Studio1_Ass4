@@ -7,6 +7,7 @@ TagManager:
   - Wall
   - Ground
   - Cosmic
+  - Bullet
   layers:
   - Default
   - TransparentFX
