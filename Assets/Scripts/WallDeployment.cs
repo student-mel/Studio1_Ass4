@@ -8,6 +8,10 @@ public class WallDeployment : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (wallPrefab == null)
+        {
+                wallPrefab = Resources.Load<GameObject>("Prefabs/Wall"); // Load the wall prefab from the Resources folder
+        }
         cam = Camera.main;
         Vector3 screenLeft = new Vector3(0, Screen.height / 2, 0);
         Vector3 worldLeft = cam.ScreenToWorldPoint(screenLeft);
