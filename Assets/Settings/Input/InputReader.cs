@@ -1,14 +1,42 @@
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-[CreateAssetMenu(fileName = "InputReader",  menuName = "Scriptable Objects/Input Reader", order = 0)]
-public class InputReader : ScriptableObject, InputSystem_Actions.IPlayerActions
+namespace Settings.Input
 {
-    public void OnMove(InputAction.CallbackContext context)
+    [CreateAssetMenu(fileName = "InputReaderObj",  menuName = "Scriptable Objects/Input Reader", order = 0)]
+    public class InputReader : ScriptableObject, InputSystem_Actions.IPlayerActions
     {
-    }
+        private InputSystem_Actions actions;
+        public UnityAction ShootEvent;
 
-    public void OnShoot(InputAction.CallbackContext context)
-    {
+        private void OnEnable()
+        {
+            if (actions == null)
+            {
+                actions = new InputSystem_Actions();
+                actions.Player.SetCallbacks(this);
+            }
+            
+            actions.Enable();
+        }
+
+        private void OnDisable()
+        {
+            actions.Disable();
+        }
+
+        public void OnMove(InputAction.CallbackContext context)
+        {
+        }
+
+        public void OnShoot(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                ShootEvent?.Invoke();
+            }
+        }
     }
 }
