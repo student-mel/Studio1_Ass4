@@ -137,8 +137,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerShootController
   inputReader: {fileID: 11400000, guid: 9ba615b03f4c80742ab8c91513633e40, type: 2}
-  bulletPrefab: {fileID: 8118028384814629284, guid: 31e498adb6cedfc4bb6fe21c9d5210f7, type: 3}
-  fireRate: 5
-  projectileSpeed: 2
+  bulletStats: {fileID: 11400000, guid: df0e8083fd48d3f44b6035f2222e6c77, type: 2}
   shootOrigin: {fileID: 2722391646813562456}
+  bulletPrefab: {fileID: 5585648676323176555, guid: 31e498adb6cedfc4bb6fe21c9d5210f7, type: 3}
+  poolSize: 30
   debug: 1

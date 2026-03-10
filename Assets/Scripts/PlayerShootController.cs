@@ -8,14 +8,13 @@ public class PlayerShootController : MonoBehaviour
     public InputReader inputReader;
 
     [Header("Projectile Settings")] 
-    [SerializeField] private float fireRate = 5;
-    [SerializeField] private float bulletSpeed = 2;
+    [SerializeField] private BulletStats bulletStats;
     [SerializeField] private Transform shootOrigin;
     
     [Header("Projectile Pooling")]
-    public GameObject bulletPrefab;
+    public BulletBehaviour bulletPrefab;
     [SerializeField] private int poolSize = 30;
-    [SerializeField] private Queue<GameObject> bulletPool = new Queue<GameObject>();
+    [SerializeField] private readonly Queue<GameObject> bulletPool = new Queue<GameObject>();
     
     [Header("Debug")]
     public bool debug;
@@ -42,7 +41,9 @@ public class PlayerShootController : MonoBehaviour
     {
         for (int i = 0; i < poolSize; i++)
         {
-            bulletPool.Enqueue(Instantiate(bulletPrefab));
+            BulletBehaviour bullet = Instantiate(bulletPrefab);
+            bullet.AssignBehaviour(this, bulletStats);
+            bulletPool.Enqueue(bullet.gameObject);
         }
     }
 
