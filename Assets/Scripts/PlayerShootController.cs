@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Settings.Input;
 using UnityEngine;
@@ -15,6 +16,7 @@ public class PlayerShootController : MonoBehaviour
     public BulletBehaviour bulletPrefab;
     [SerializeField] private int poolSize = 30;
     [SerializeField] private Queue<GameObject> bulletPool = new Queue<GameObject>();
+    private bool isShooting = false;
     
     [Header("Debug")]
     public bool debug;
@@ -41,14 +43,26 @@ public class PlayerShootController : MonoBehaviour
     
     private void ShootEvent()
     {
-        SpawnBullet();
+        StartCoroutine(Shoot());
     }
     
     private void ShootStopEvent()
     {
-        
+        isShooting = false;
+        StopAllCoroutines();
     }
 
+    IEnumerator Shoot()
+    {
+        if (isShooting) yield break;
+        isShooting = true;
+        
+        while (isShooting)
+        {
+            SpawnBullet();
+            yield return new WaitForSeconds(1/bulletStats.fireRate);
+        }
+    }
 
     #region Object Pooling
 
