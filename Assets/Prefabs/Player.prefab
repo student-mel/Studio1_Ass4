@@ -215,5 +215,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e2bb7b8210c5f443ae4333b4c7c9bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMoveController
-  inputReader: {fileID: 0}
+  inputReader: {fileID: 11400000, guid: 9ba615b03f4c80742ab8c91513633e40, type: 2}
   speed: 5
