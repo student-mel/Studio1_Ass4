@@ -9,7 +9,7 @@ namespace Settings.Input
     public class InputReader : ScriptableObject, InputSystem_Actions.IPlayerActions
     {
         private InputSystem_Actions actions;
-        public UnityAction ShootEvent;
+        public UnityAction ShootStartedEvent, ShootStoppedEvent;
         public UnityAction<Vector2> MoveEvent;
 
         private void OnEnable()
@@ -37,7 +37,12 @@ namespace Settings.Input
         {
             if (context.started)
             {
-                ShootEvent?.Invoke();
+                ShootStartedEvent?.Invoke();
+            }
+
+            if (context.canceled)
+            {
+                ShootStoppedEvent?.Invoke();
             }
         }
     }

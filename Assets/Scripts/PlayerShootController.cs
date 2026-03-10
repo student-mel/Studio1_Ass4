@@ -14,7 +14,7 @@ public class PlayerShootController : MonoBehaviour
     [Header("Projectile Pooling")]
     public BulletBehaviour bulletPrefab;
     [SerializeField] private int poolSize = 30;
-    [SerializeField] private readonly Queue<GameObject> bulletPool = new Queue<GameObject>();
+    [SerializeField] private Queue<GameObject> bulletPool = new Queue<GameObject>();
     
     [Header("Debug")]
     public bool debug;
@@ -27,29 +27,47 @@ public class PlayerShootController : MonoBehaviour
 
     private void OnEnable()
     {
-        inputReader.ShootEvent += ShootEvent;
+        inputReader.ShootStartedEvent += ShootEvent;
+        inputReader.ShootStoppedEvent += ShootStopEvent;
         CreatePool();
     }
-
+    
     private void OnDisable()
     {
-        inputReader.ShootEvent -= ShootEvent;
+        inputReader.ShootStartedEvent -= ShootEvent;
+        inputReader.ShootStoppedEvent -= ShootStopEvent;
+        DestroyPool();
     }
     
     private void ShootEvent()
     {
         SpawnBullet();
     }
+    
+    private void ShootStopEvent()
+    {
+        
+    }
+
 
     #region Object Pooling
 
     private void CreatePool()
     {
+        bulletPool = new Queue<GameObject>();
         for (int i = 0; i < poolSize; i++)
         {
             BulletBehaviour bullet = Instantiate(bulletPrefab, transform);
             bullet.AssignBehaviour(this, bulletStats);
             bulletPool.Enqueue(bullet.gameObject);
+        }
+    }
+
+    private void DestroyPool()
+    {
+        for (int i = poolSize - 1; i >= 0; i--)
+        {
+            Destroy(transform.GetChild(i).gameObject);
         }
     }
 
