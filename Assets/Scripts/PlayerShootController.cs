@@ -17,6 +17,7 @@ public class PlayerShootController : MonoBehaviour
     [SerializeField] private int poolSize = 30;
     [SerializeField] private Queue<GameObject> bulletPool = new Queue<GameObject>();
     private bool isShooting = false;
+    private float nextFireTime = 0f;
     
     [Header("Debug")]
     public bool debug;
@@ -49,7 +50,6 @@ public class PlayerShootController : MonoBehaviour
     private void ShootStopEvent()
     {
         isShooting = false;
-        StopAllCoroutines();
     }
 
     IEnumerator Shoot()
@@ -59,8 +59,13 @@ public class PlayerShootController : MonoBehaviour
         
         while (isShooting)
         {
-            SpawnBullet();
-            yield return new WaitForSeconds(1/bulletStats.fireRate);
+            if (Time.time >= nextFireTime)
+            {
+                SpawnBullet();
+                nextFireTime = Time.time + (1f / bulletStats.fireRate);
+            }
+
+            yield return null;
         }
     }
 
