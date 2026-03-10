@@ -41,7 +41,7 @@ public class PlayerShootController : MonoBehaviour
     {
         for (int i = 0; i < poolSize; i++)
         {
-            BulletBehaviour bullet = Instantiate(bulletPrefab);
+            BulletBehaviour bullet = Instantiate(bulletPrefab, transform);
             bullet.AssignBehaviour(this, bulletStats);
             bulletPool.Enqueue(bullet.gameObject);
         }
