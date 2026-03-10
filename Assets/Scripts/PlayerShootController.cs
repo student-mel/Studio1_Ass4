@@ -11,11 +11,12 @@ public class PlayerShootController : MonoBehaviour
     [Header("Projectile Settings")] 
     [SerializeField] private BulletStats bulletStats;
     [SerializeField] private Transform shootOrigin;
+    private Vector2 shootDir;
     
     [Header("Projectile Pooling")]
     public BulletBehaviour bulletPrefab;
     [SerializeField] private int poolSize = 30;
-    [SerializeField] private Queue<GameObject> bulletPool = new Queue<GameObject>();
+    private Queue<BulletBehaviour> bulletPool = new Queue<BulletBehaviour>();
     private bool isShooting = false;
     private float nextFireTime = 0f;
     
@@ -32,9 +33,10 @@ public class PlayerShootController : MonoBehaviour
     {
         inputReader.ShootStartedEvent += ShootEvent;
         inputReader.ShootStoppedEvent += ShootStopEvent;
+        inputReader.MoveEvent += MoveEvent;
         CreatePool();
     }
-    
+
     private void OnDisable()
     {
         inputReader.ShootStartedEvent -= ShootEvent;
@@ -50,6 +52,16 @@ public class PlayerShootController : MonoBehaviour
     private void ShootStopEvent()
     {
         isShooting = false;
+    }
+    
+    private void MoveEvent(Vector2 arg0)
+    {
+        shootDir = arg0.x switch
+        {
+            < 0 => new Vector2(1, 1).normalized,
+            > 0 => new Vector2(-1, 1).normalized,
+            _ => Vector2.up
+        };
     }
 
     IEnumerator Shoot()
@@ -73,12 +85,12 @@ public class PlayerShootController : MonoBehaviour
 
     private void CreatePool()
     {
-        bulletPool = new Queue<GameObject>();
+        bulletPool = new Queue<BulletBehaviour>();
         for (int i = 0; i < poolSize; i++)
         {
             BulletBehaviour bullet = Instantiate(bulletPrefab, transform);
             bullet.AssignBehaviour(this, bulletStats);
-            bulletPool.Enqueue(bullet.gameObject);
+            bulletPool.Enqueue(bullet);
         }
     }
 
@@ -92,12 +104,13 @@ public class PlayerShootController : MonoBehaviour
 
     private void SpawnBullet()
     {
-        GameObject bullet = bulletPool.Dequeue();
+        BulletBehaviour bullet = bulletPool.Dequeue();
+        bullet.SetDir(shootDir);
         bullet.transform.position = shootOrigin.position;
-        bullet.SetActive(true);
+        bullet.gameObject.SetActive(true);
     }
 
-    public void EnqueueBullet(GameObject bullet)
+    public void EnqueueBullet(BulletBehaviour bullet)
     {
         bulletPool.Enqueue(bullet);
     }

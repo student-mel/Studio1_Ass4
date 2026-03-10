@@ -11,6 +11,7 @@ public class BulletBehaviour : MonoBehaviour
     private BulletStats stats;
 
     private Rigidbody2D rb;
+    private Vector2 shootDir;
     private Coroutine lifetimeRoutine;
 
     private void Awake()
@@ -32,7 +33,7 @@ public class BulletBehaviour : MonoBehaviour
 
     private void Update()
     {
-        rb.linearVelocity = Vector2.up * stats.speed;
+        rb.linearVelocity = shootDir * stats.speed;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -46,7 +47,12 @@ public class BulletBehaviour : MonoBehaviour
     private void OnDisable()
     {
         StopAllCoroutines();
-        shooter.EnqueueBullet(gameObject);
+        shooter.EnqueueBullet(this);
+    }
+
+    public void SetDir(Vector2 dir)
+    {
+        shootDir = dir;
     }
 
     private IEnumerator DisableAfterLifetime()
