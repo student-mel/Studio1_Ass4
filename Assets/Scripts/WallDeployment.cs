@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class WallDeployment : MonoBehaviour
 {
-    public GameObject wallPrefab;
+    [Tooltip("Attach the Wall prefab here. This is needed so that objects to fall off the sides.")] public GameObject wallPrefab;
 
     Camera cam;
     // Start is called once before the first execution of Update after the MonoBehaviour is created

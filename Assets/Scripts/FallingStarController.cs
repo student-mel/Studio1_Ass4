@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class FallingStarController : MonoBehaviour
 {
-    public float moveSpeed = 5f;
+    public float moveSpeed;
 
     public float maxAngleSpread = 45f; // Max angle (in degrees) from the pure down direction
 

@@ -5,10 +5,15 @@ public class StarSpawner : MonoBehaviour
     //this is going to spawn falling stars and meteors that the player can either collect or shoot. 
     //they will spawn at random intervals and fall at a constant speed but random angles and positions.
 
-    public GameObject fallingStarPrefab; // Prefab for the falling star
-    public GameObject meteorPrefab; // Prefab for the meteor
+    [Tooltip("Attach the falling star prefab here")] public GameObject fallingStarPrefab; // Prefab for the falling star
+    [Tooltip("Attach the meteor Prefab here")] public GameObject meteorPrefab; // Prefab for the meteor
 
-    [SerializeField]
+    [Tooltip("Set the falling star's speed here")]  public float fallingStarSpeed = 5.0f;
+    [Tooltip("Set the meteor's speed here")]  public float meteorSpeed = 5.0f;
+
+    [Tooltip("This defines the falling star to meteor ratio. Set this smaller for less falling stars")] 
+    public float fallingStarToMeteorRatio = 0.5f;
+
     private BoxCollider2D spawnerBounds;
 
     [Tooltip("This governs how many falling stars and meteors are spawned per second")]  public float spawnFrequency = 10f; //how many stars to spawn per second
@@ -42,13 +47,15 @@ public class StarSpawner : MonoBehaviour
                Random.Range(bounds.min.x, bounds.max.x),
                Random.Range(bounds.min.y, bounds.max.y));
 
-            if (Random.value < 0.5f) // 50% chance to spawn a falling star or meteor
+            if (Random.value < fallingStarToMeteorRatio) // 50% chance to spawn a falling star or meteor by default
             {
-                GameObject.Instantiate(fallingStarPrefab, randomPosition, Quaternion.identity);
+                GameObject fallingStar = GameObject.Instantiate(fallingStarPrefab, randomPosition, Quaternion.identity);
+                fallingStar.GetComponent<FallingStarController>().moveSpeed = fallingStarSpeed;
             }
             else
             {
-                GameObject.Instantiate(meteorPrefab, randomPosition, Quaternion.identity);
+                GameObject meteor = GameObject.Instantiate(meteorPrefab, randomPosition, Quaternion.identity);
+                meteor.GetComponent<MeteorController>().moveSpeed = meteorSpeed;
             }
 
             // Schedule the next spawn here
