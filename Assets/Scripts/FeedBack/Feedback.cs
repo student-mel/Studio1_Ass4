@@ -6,8 +6,12 @@ public class Feedback : MonoBehaviour
 
     [SerializeField] private AudioClip[] deathSFX;
 
-    [SerializeField] private bool destroyEnemyObject = true;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private bool destroyEnemyObject = false;
     private bool hasPlayed = false;
+
+    [SerializeField] private bool isDead = false;
+    private bool previousIsDead = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -18,50 +22,41 @@ public class Feedback : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (isDead && !previousIsDead)
+        {
+            PlayDeathFeedback();
+        }
+        else if (!isDead && previousIsDead)
+        {
+            ResetFeedback();
+        }
+
+        previousIsDead = isDead;
     }
 
     public void PlayDeathFeedback()
     {
         if (hasPlayed) return;
-
         hasPlayed = true;
 
-        if (deathVFXPrefab != null)
+
+        
+        GameObject vfx = Instantiate(deathVFXPrefab, transform.position, Quaternion.identity);
+        Destroy(vfx, 2f);
+        
+        AudioClip clip = deathSFX[Random.Range(0, deathSFX.Length)];
+        audioSource.pitch = Random.Range(0.9f, 1.5f);
+        audioSource.PlayOneShot(clip);
+
+        if (destroyEnemyObject)
         {
-            GameObject vfx = Instantiate(deathVFXPrefab, transform.position, Quaternion.identity);
-            Destroy(vfx, 2f);
+            Destroy(gameObject);
         }
 
-        if (deathSFX != null && deathSFX.Length > 0)
-        {
-            AudioClip clip = deathSFX[Random.Range(0, deathSFX.Length)];
+    }
 
-            if (clip == null)
-            {
-                Debug.LogWarning("Selected clip is NULL");
-                return;
-            }
-
-            Debug.Log("Playing clip: " + clip.name);
-
-            GameObject tempAudio = new GameObject("TempAudio");
-            tempAudio.transform.position = Vector3.zero; // safer for testing
-
-            AudioSource source = tempAudio.AddComponent<AudioSource>();
-            source.clip = clip;
-            source.volume = 1f;
-            source.pitch = Random.Range(0.95f, 1.05f);
-            source.spatialBlend = 0f; // force 2D sound
-            source.playOnAwake = false;
-
-            source.Play();
-
-            Destroy(tempAudio, clip.length + 0.5f);
-        }
-        else
-        {
-            Debug.LogWarning("deathSFX array is empty or null");
-        }
+    public void ResetFeedback()
+    {
+        hasPlayed = false;
     }
 }
