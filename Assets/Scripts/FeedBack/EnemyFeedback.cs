@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Feedback : MonoBehaviour
+public class EnemyFeedback : MonoBehaviour
 {
     [SerializeField] private GameObject deathVFXPrefab;
 
