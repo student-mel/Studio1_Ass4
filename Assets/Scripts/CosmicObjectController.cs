@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class CosmicObjectController : MonoBehaviour
 {
 
@@ -63,7 +64,8 @@ public class CosmicObjectController : MonoBehaviour
         {
             //if it hits here, its trajectory is on a path away from the scene so just destroy it since its no longer relevant to the player
             Debug.Log("Hit stage wall with meteor");
-            Destroy(gameObject, 1.0f); // Destroy the object since it's no longer relevant to the player but give it time to pass through the screen completely
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>()); // Ignore collision with stage walls
+            Destroy(gameObject); // Destroy the object since it's no longer relevant to the player
         }
 
         else if (collision.gameObject.CompareTag(groundTag))

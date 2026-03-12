@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(BoxCollider2D))]
 public class StarSpawner : MonoBehaviour
 {
     //this is going to spawn falling stars and meteors that the player can either collect or shoot. 
