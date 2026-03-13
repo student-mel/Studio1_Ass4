@@ -47,7 +47,7 @@ public class PlayerFeedback : MonoBehaviour
         if (hurtSFX.Length > 0)
         {
             AudioClip clip = hurtSFX[Random.Range(0, hurtSFX.Length)];
-            audioSource.pitch = Random.Range(0.9f, 1.5f);
+            audioSource.pitch = Random.Range(0.9f, 1.3f);
             audioSource.PlayOneShot(clip);
         }
 
