@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - Wall
+  - Ground
+  - Cosmic
+  - Bullet
   layers:
   - Default
   - TransparentFX

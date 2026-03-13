@@ -60,4 +60,12 @@ public class BulletBehaviour : MonoBehaviour
         yield return new WaitForSeconds(stats.lifetime);
         gameObject.SetActive(false);
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            gameObject.SetActive(false); //blow it up if it hits a wall
+        }
+    }
 }
