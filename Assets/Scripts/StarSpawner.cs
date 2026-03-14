@@ -22,6 +22,9 @@ public class StarSpawner : MonoBehaviour
     private float spawnTimer; // Timer to track time since last spawn
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
+    public SpellsManager spellManager;
+    public int meteorsShot = 0;
+    
     void Awake()
     {
         if (fallingStarPrefab == null)
@@ -63,7 +66,9 @@ public class StarSpawner : MonoBehaviour
             else
             {
                 GameObject meteor = GameObject.Instantiate(meteorPrefab, randomPosition, Quaternion.identity);
-                meteor.GetComponent<MeteorController>().moveSpeed = meteorSpeed;
+                MeteorController m = meteor.GetComponent<MeteorController>();
+                m.moveSpeed = meteorSpeed;
+                m.spawner = this;
             }
 
             // Schedule the next spawn here
@@ -71,5 +76,18 @@ public class StarSpawner : MonoBehaviour
             spawnTimer = 0f; // Reset the spawn timer after spawning an object
         }
         spawnTimer += Time.deltaTime; // Increment the spawn timer by the time elapsed since the last frame
+    }
+    
+    public void MeteorDestroyed(Transform t)
+    {
+        SpellStats s;
+        if (spellManager.CheckSpellSpawn(meteorsShot, out s))
+        {
+            s.Spawn(t, spellManager);
+            // reset meteorsShot for now, for testing only, absolutely will not work if we have more than one spell
+            meteorsShot = 0;    
+        }
+
+        meteorsShot++;
     }
 }

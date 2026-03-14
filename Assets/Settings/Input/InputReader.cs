@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 namespace Settings.Input
 {
-    [CreateAssetMenu(fileName = "InputReaderObj",  menuName = "Scriptable Objects/Input Reader", order = 1)]
+    [CreateAssetMenu(fileName = "InputReaderObj",  menuName = "Scriptable Objects/Input Reader", order = 10)]
     public class InputReader : ScriptableObject, InputSystem_Actions.IPlayerActions
     {
         private InputSystem_Actions actions;

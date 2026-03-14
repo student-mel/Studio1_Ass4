@@ -17,14 +17,15 @@ public class ShootingStarController : CosmicObjectController
         DeployObject(direction);
     }
 
-    protected override void OnCollisionEnter2D(Collision2D collision)
+    protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        base.OnCollisionEnter2D(collision);
+        base.OnTriggerEnter2D(collision);
         if (collision.gameObject.CompareTag(projectileTag))
         {
             Destroy(gameObject); // Destroy the shooting star when hit by a projectile
             //deploy code fot the shooting star's power up goodies once implemented
             scoreHandler.AddScore(shootingStarScore); // Increment the player's score by 2 when they hit a shooting star with a projectile, since shooting stars are more difficult to hit than falling stars
+            collision.gameObject.SetActive(false); // deactivate the projectile on collision
         }
     }
 }

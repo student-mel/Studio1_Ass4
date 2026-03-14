@@ -43,7 +43,7 @@ public class CosmicObjectController : MonoBehaviour
         rb.linearVelocity = randomDirection * moveSpeed; //start it moving right away
     }
 
-    protected virtual void OnCollisionEnter2D(Collision2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag(playerTag))
         {
@@ -54,17 +54,16 @@ public class CosmicObjectController : MonoBehaviour
         else if (collision.gameObject.CompareTag(projectileTag))
         {
             // Handle collision with projectile
-            collision.gameObject.SetActive(false); // deactivate the projectile on collision
         }
         else if (collision.gameObject.CompareTag(starsTag))
         {
-            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>()); // Ignore collision with stars
+            //Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>()); // Ignore collision with stars
         }
         else if (collision.gameObject.CompareTag(wallTag))
         {
             //if it hits here, its trajectory is on a path away from the scene so just destroy it since its no longer relevant to the player
             //Debug.Log("Hit stage wall with meteor");
-            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>()); // Ignore collision with stage walls
+            //.IgnoreCollision(collision.collider, GetComponent<Collider2D>()); // Ignore collision with stage walls
             Destroy(gameObject); // Destroy the object since it's no longer relevant to the player
         }
 
