@@ -3,6 +3,7 @@ using UnityEngine;
 public class MeteorController : CosmicObjectController
 {
     ScoreHandler scoreHandler;
+    [HideInInspector] public StarSpawner spawner;
 
     [Tooltip("Use this to define how much meteors damage")] public int meteorScore = 1;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -13,9 +14,9 @@ public class MeteorController : CosmicObjectController
         DeployObject(Vector2.down);
     }
 
-    protected override void OnCollisionEnter2D(Collision2D collision)
+    protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        base.OnCollisionEnter2D(collision);
+        base.OnTriggerEnter2D(collision);
         if (collision.gameObject.CompareTag(playerTag))
         {
             scoreHandler.AddScore(-meteorScore); // Decrement the player's score when they get hit by a meteor
@@ -23,7 +24,10 @@ public class MeteorController : CosmicObjectController
         }
         else if (collision.gameObject.CompareTag(projectileTag))
         {
+            scoreHandler.AddScore(meteorScore);
+            spawner.MeteorDestroyed(transform);
             Destroy(gameObject); // Destroy the meteor
+            collision.gameObject.SetActive(false); // deactivate the projectile on collision
         }
     }
 }

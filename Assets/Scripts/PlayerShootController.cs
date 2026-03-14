@@ -10,7 +10,7 @@ public class PlayerShootController : MonoBehaviour
 
     [Header("Projectile Settings")] 
     [SerializeField] private BulletStats bulletStats;
-    [SerializeField] private Transform shootOrigin;
+    [SerializeField] public Transform shootOrigin;
     private Vector2 shootDir;
     
     [Header("Projectile Pooling")]

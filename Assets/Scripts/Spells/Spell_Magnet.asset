@@ -12,24 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 350051167ba4af34fb97634c8e2202c3, type: 3}
   m_Name: Spell_Magnet
   m_EditorClassIdentifier: Assembly-CSharp::SpellStats
-  spellPrefab: {fileID: 0}
+  spellPrefab: {fileID: 5619473428544679022, guid: db24248cfd0bd9e4f9967106cc0cd314, type: 3}
   meteorThreshold: 10
   isScalingThreshold: 0
-  fallSpeed: 4
+  fallSpeed: 1
   scoreToAdd: 0
   duration: 10
-  OnCollected:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11500000, guid: c827f9ce0326d3e4087a453919a99f62, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  isPhysicsEffect: 1
+  effectRadius: 5
+  spellEffect: 0

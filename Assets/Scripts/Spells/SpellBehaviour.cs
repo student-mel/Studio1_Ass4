@@ -5,6 +5,7 @@ using Random = UnityEngine.Random;
 
 public class SpellBehaviour : MonoBehaviour
 {
+    private SpellsManager spellMan;
     private SpellStats spellStats;
     private Rigidbody2D rb;
 
@@ -23,13 +24,15 @@ public class SpellBehaviour : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            StartCoroutine(spellStats.EffectCoroutine(other.transform));
+            spellMan.StartEffect(spellStats);
+            Destroy(gameObject);
         }
     }
     
-    public void ApplyStats(SpellStats stats)
+    public void ApplyStats(SpellStats stats, SpellsManager spellManager)
     {
         spellStats = stats;
+        spellMan = spellManager;
     }
 
     private Vector2 GetRandSpawnVel()

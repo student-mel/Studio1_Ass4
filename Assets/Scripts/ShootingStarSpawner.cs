@@ -73,7 +73,7 @@ public class ShootingStarSpawner : MonoBehaviour
     {
         if (spawnerBounds1 == null || spawnerBounds2 == null)
         {
-            Debug.Log("Spawners not found");
+            //Debug.Log("Spawners not found");
             return;
         }
         while (spawnTimer >= spawnInterval)

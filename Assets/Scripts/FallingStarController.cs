@@ -13,9 +13,9 @@ public class FallingStarController : CosmicObjectController
         DeployObject(Vector2.down);
     }
 
-    protected override void OnCollisionEnter2D(Collision2D collision)
+    protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        base.OnCollisionEnter2D(collision);
+        base.OnTriggerEnter2D(collision);
         if (collision.gameObject.CompareTag(playerTag))
         {
             scoreHandler.AddScore(fallingStarScore); // Increment the player's score when they collect a falling star

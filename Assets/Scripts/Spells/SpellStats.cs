@@ -17,22 +17,22 @@ public class SpellStats : ScriptableObject
     [Header("Collection Stats")]
     public float scoreToAdd = 0;
     public float duration = 10f;
-    public SpellEffect effect;
+    
+    [Header("Effect Stats")]
+    public bool isPhysicsEffect = false;
+    public float effectRadius = 1.5f;
 
-    public void Spawn(Transform spawnPoint)
+    public enum SpellEffect
+    {
+        Magnet,
+        Something
+    }
+    
+    public SpellEffect spellEffect;
+
+    public void Spawn(Transform spawnPoint, SpellsManager spellMan)
     {
         SpellBehaviour spell = Instantiate(spellPrefab,  spawnPoint.position, Quaternion.identity);
-        spell.ApplyStats(this);
-    }
-
-    public IEnumerator EffectCoroutine(Transform player)
-    {
-        float t = 0f;
-        while (t < duration)
-        {
-            effect.Effect(t, player);            
-            t += Time.deltaTime;
-            yield return null;
-        }
+        spell.ApplyStats(this, spellMan);
     }
 }
