@@ -48,7 +48,7 @@ public class CosmicObjectController : MonoBehaviour
         if (collision.gameObject.CompareTag(playerTag))
         {
             // Handle collision with player
-            Debug.Log("Hit player with meteor");
+            //Debug.Log("Hit player with meteor");
             //Destroy(gameObject); // Destroy this object, but the player will handle the consequences of being hit in their own script
         }
         else if (collision.gameObject.CompareTag(projectileTag))
@@ -63,7 +63,7 @@ public class CosmicObjectController : MonoBehaviour
         else if (collision.gameObject.CompareTag(wallTag))
         {
             //if it hits here, its trajectory is on a path away from the scene so just destroy it since its no longer relevant to the player
-            Debug.Log("Hit stage wall with meteor");
+            //Debug.Log("Hit stage wall with meteor");
             Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>()); // Ignore collision with stage walls
             Destroy(gameObject); // Destroy the object since it's no longer relevant to the player
         }
@@ -71,7 +71,7 @@ public class CosmicObjectController : MonoBehaviour
         else if (collision.gameObject.CompareTag(groundTag))
         {
             // Handle collision with the ground
-            Debug.Log("Hit ground with meteor");
+            //Debug.Log("Hit ground with meteor");
             Destroy(gameObject); // Destroy the object since it's no longer relevant to the player
         }
     }

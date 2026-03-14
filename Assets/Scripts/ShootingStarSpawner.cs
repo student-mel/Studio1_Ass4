@@ -34,6 +34,7 @@ public class ShootingStarSpawner : MonoBehaviour
             GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("ShootingStarSpawner"); // Find all GameObjects with the tag "ShootingStarSpawner"
             if (gameObjects.Length != 2)
             {
+                Debug.Log("right amount of spawners not found");
                 return; //if there aren't 2 objects tagged as "ShootingStarSpawner", something's gone wrong and we should just exit out of this function to avoid errors
             }
             foreach (GameObject obj in gameObjects)
@@ -41,21 +42,21 @@ public class ShootingStarSpawner : MonoBehaviour
                 BoxCollider2D collider = obj.GetComponent<BoxCollider2D>(); // Get the BoxCollider2D component from the GameObject
                 if (collider == null)
                 {
+                    Debug.Log("box colliders not found");
                     return; //if either tagged object doesn't have a BoxCollider2D component, something's gone wrong and we should just exit out of this function to avoid errors
                 }
             }
-            //place these on the top left and top right sides of the screen, ensuring they are big enough to cover the entire area from the center of the screen edge to the top.
-            Vector3 deployLeft = new Vector3(0.2f, (Screen.height - Screen.height / 4), 0);
-            Vector3 worldLeft = cam.ScreenToWorldPoint(deployLeft);
-            gameObjects[0].transform.position = new Vector3(worldLeft.x, worldLeft.y, 0);
-
-            Vector3 deployRight = new Vector3(Screen.width - 0.2f, (Screen.height - Screen.height / 4), 0); //tiny nudge inwards to avoid contact with wall object righht away
-            Vector3 worldRight = cam.ScreenToWorldPoint(deployRight);
-            gameObjects[1].transform.position = new Vector3(worldRight.x, worldRight.y, 0);
-
             spawnerBounds1 = gameObjects[0].GetComponent<BoxCollider2D>(); // Find the left BoxCollider2D component in the scene
             spawnerBounds2 = gameObjects[1].GetComponent<BoxCollider2D>(); // Find the right BoxCollider2D component in the scene
         }
+        //place these on the top left and top right sides of the screen, ensuring they are big enough to cover the entire area from the center of the screen edge to the top.
+        Vector3 deployLeft = new Vector3(5.0f, (Screen.height - Screen.height / 4), 0);
+        Vector3 worldLeft = cam.ScreenToWorldPoint(deployLeft);
+        spawnerBounds1.gameObject.transform.position = new Vector3(worldLeft.x, worldLeft.y, 0);
+
+        Vector3 deployRight = new Vector3(Screen.width - 5.0f, (Screen.height - Screen.height / 4), 0); //tiny nudge inwards to avoid contact with wall object righht away
+        Vector3 worldRight = cam.ScreenToWorldPoint(deployRight);
+        spawnerBounds2.gameObject.transform.position = new Vector3(worldRight.x, worldRight.y, 0);
 
     }
     void Start()
@@ -70,8 +71,9 @@ public class ShootingStarSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (spawnerBounds1 != null || spawnerBounds2 != null)
+        if (spawnerBounds1 == null || spawnerBounds2 == null)
         {
+            Debug.Log("Spawners not found");
             return;
         }
         while (spawnTimer >= spawnInterval)
