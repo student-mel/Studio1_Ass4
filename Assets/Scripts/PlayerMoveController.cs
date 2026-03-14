@@ -30,6 +30,6 @@ public class PlayerMoveController : MonoBehaviour
     private void OnMove(Vector2 arg0)
     {
         rb.linearVelocity = arg0 * speed;
-        Debug.Log(arg0.normalized);
+        //Debug.Log(arg0.normalized);
     }
 }
