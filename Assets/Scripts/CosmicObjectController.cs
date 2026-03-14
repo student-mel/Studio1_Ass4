@@ -54,7 +54,7 @@ public class CosmicObjectController : MonoBehaviour
         else if (collision.gameObject.CompareTag(projectileTag))
         {
             // Handle collision with projectile
-            Destroy(gameObject); // Destroy the object
+            collision.gameObject.SetActive(false); // deactivate the projectile on collision
         }
         else if (collision.gameObject.CompareTag(starsTag))
         {
