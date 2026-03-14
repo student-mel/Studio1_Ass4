@@ -9,7 +9,6 @@ public class ShootingStarController : CosmicObjectController
     {
         scoreHandler = GameObject.Find("Canvas").GetComponent<ScoreHandler>();
         maxAngleSpread = 10f; //narrow angle spread for shooting stars, since they should be more predictable than meteors
-        moveSpeed = 10f;
     }
 
     public void SetDirectionAndDeploy(Vector2 direction)

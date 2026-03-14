@@ -8,7 +8,6 @@ public class MeteorController : CosmicObjectController
     {
         scoreHandler = GameObject.Find("Canvas").GetComponent<ScoreHandler>();
         maxAngleSpread = 45f;
-        moveSpeed = 5f;
         DeployObject(Vector2.down);
     }
 

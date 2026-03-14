@@ -47,7 +47,7 @@ public class TimerHandler : MonoBehaviour
 
     void DisplayTime(float displayTime)
     {
-        if (displayTime < 0)
+        if (displayTime <= 0)
         {
             displayTime = 0;
             timerIsRunning = false; // Stop the timer when it reaches 0

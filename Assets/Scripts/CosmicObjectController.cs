@@ -6,7 +6,7 @@ public class CosmicObjectController : MonoBehaviour
 
     public float moveSpeed;
 
-    protected float maxAngleSpread; // Max angle (in degrees) from the pure down direction
+    protected float maxAngleSpread; // Max angle (in degrees) from the pure cardinal direction
 
     protected const string playerTag = "Player";
     protected const string projectileTag = "Bullet";
