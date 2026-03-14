@@ -21,9 +21,10 @@ public class StarSpawner : MonoBehaviour
     private float spawnInterval; // Time between spawns
     private float spawnTimer; // Timer to track time since last spawn
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-
-    void Awake()
+    void Start()
     {
+        spawnInterval = 1f/spawnFrequency; // Calculate the time between spawns based on the frequency
+        spawnTimer = Time.time + spawnInterval; // Initialize the spawn timer
         if (fallingStarPrefab == null)
         {
             fallingStarPrefab = Resources.Load<GameObject>("Prefabs/FallingStar"); // Load the falling star prefab from the Resources folder
@@ -32,19 +33,13 @@ public class StarSpawner : MonoBehaviour
         {
             meteorPrefab = Resources.Load<GameObject>("Prefabs/Meteor"); // Load the meteor prefab from the Resources folder
         }
-    }
-    void Start()
-    {
-        spawnInterval = 1f/spawnFrequency; // Calculate the time between spawns based on the frequency
-        //spawnTimer = Time.time + spawnInterval; // Initialize the spawn timer
-        spawnTimer = 0f; // Initialize the spawn timer to 0
         spawnerBounds = GetComponent<BoxCollider2D>(); // Get the BoxCollider2D component attached to this GameObject
     }
 
     // Update is called once per frame
     void Update()
     {
-        while (spawnTimer >= spawnInterval)
+        while (Time.time >= spawnTimer)
         {
             //spawn a falling star or meteor at a random position and angle within the spawn area
             Bounds bounds = spawnerBounds.bounds;
@@ -65,9 +60,7 @@ public class StarSpawner : MonoBehaviour
             }
 
             // Schedule the next spawn here
-            spawnTimer = 0f; // Reset the spawn timer to 0 to ensure that the next spawn is scheduled correctly based on the current time
-            //spawnTimer += spawnInterval;
+            spawnTimer += spawnInterval;
         }
-        spawnTimer += Time.deltaTime; // Increment the spawn timer by the time that has passed since the last frame
     }
 }

@@ -4,8 +4,6 @@ public class FallingStarController : CosmicObjectController
 {
     ScoreHandler scoreHandler;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-
-    [Tooltip("Use this to define how much falling stars are worth")] public int fallingStarScore = 1;
     void Start()
     {
         scoreHandler = GameObject.Find("Canvas").GetComponent<ScoreHandler>();
@@ -18,7 +16,7 @@ public class FallingStarController : CosmicObjectController
         base.OnCollisionEnter2D(collision);
         if (collision.gameObject.CompareTag(playerTag))
         {
-            scoreHandler.AddScore(fallingStarScore); // Increment the player's score when they collect a falling star
+            scoreHandler.AddScore(1); // Increment the player's score when they collect a falling star
             Destroy(gameObject); // Destroy the falling star
         }
         else if (collision.gameObject.CompareTag(projectileTag))
