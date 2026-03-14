@@ -3,6 +3,8 @@ using UnityEngine;
 public class FallingStarController : CosmicObjectController
 {
     ScoreHandler scoreHandler;
+
+    [Tooltip("Use this to define how much falling stars are worth")] public int fallingStarScore = 1;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,7 +18,7 @@ public class FallingStarController : CosmicObjectController
         base.OnCollisionEnter2D(collision);
         if (collision.gameObject.CompareTag(playerTag))
         {
-            scoreHandler.AddScore(1); // Increment the player's score when they collect a falling star
+            scoreHandler.AddScore(fallingStarScore); // Increment the player's score when they collect a falling star
             Destroy(gameObject); // Destroy the falling star
         }
         else if (collision.gameObject.CompareTag(projectileTag))
