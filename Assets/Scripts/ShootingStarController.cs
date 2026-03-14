@@ -4,6 +4,7 @@ public class ShootingStarController : CosmicObjectController
 {
     ScoreHandler scoreHandler;
 
+    [Tooltip("Use this to define how much shooting stars are worth")] public int shootingStarScore = 2;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -23,7 +24,7 @@ public class ShootingStarController : CosmicObjectController
         {
             Destroy(gameObject); // Destroy the shooting star when hit by a projectile
             //deploy code fot the shooting star's power up goodies once implemented
-            scoreHandler.AddScore(2); // Increment the player's score by 2 when they hit a shooting star with a projectile, since shooting stars are more difficult to hit than falling stars
+            scoreHandler.AddScore(shootingStarScore); // Increment the player's score by 2 when they hit a shooting star with a projectile, since shooting stars are more difficult to hit than falling stars
         }
     }
 }

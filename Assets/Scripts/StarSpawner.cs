@@ -21,10 +21,9 @@ public class StarSpawner : MonoBehaviour
     private float spawnInterval; // Time between spawns
     private float spawnTimer; // Timer to track time since last spawn
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    void Awake()
     {
-        spawnInterval = 1f/spawnFrequency; // Calculate the time between spawns based on the frequency
-        spawnTimer = Time.time + spawnInterval; // Initialize the spawn timer
         if (fallingStarPrefab == null)
         {
             fallingStarPrefab = Resources.Load<GameObject>("Prefabs/FallingStar"); // Load the falling star prefab from the Resources folder
@@ -34,12 +33,20 @@ public class StarSpawner : MonoBehaviour
             meteorPrefab = Resources.Load<GameObject>("Prefabs/Meteor"); // Load the meteor prefab from the Resources folder
         }
         spawnerBounds = GetComponent<BoxCollider2D>(); // Get the BoxCollider2D component attached to this GameObject
+
+    }
+    void Start()
+    {
+        spawnInterval = 1f/spawnFrequency; // Calculate the time between spawns based on the frequency
+        //spawnTimer = Time.time + spawnInterval; // Initialize the spawn timer
+        spawnTimer = 0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        while (Time.time >= spawnTimer)
+        //while (Time.time >= spawnTimer)
+        while (spawnTimer >= spawnInterval)
         {
             //spawn a falling star or meteor at a random position and angle within the spawn area
             Bounds bounds = spawnerBounds.bounds;
@@ -60,7 +67,9 @@ public class StarSpawner : MonoBehaviour
             }
 
             // Schedule the next spawn here
-            spawnTimer += spawnInterval;
+            //spawnTimer += spawnInterval;
+            spawnTimer = 0f; // Reset the spawn timer after spawning an object
         }
+        spawnTimer += Time.deltaTime; // Increment the spawn timer by the time elapsed since the last frame
     }
 }
