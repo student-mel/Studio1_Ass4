@@ -6,7 +6,7 @@ public class CosmicObjectController : MonoBehaviour
 
     public float moveSpeed;
 
-    protected float maxAngleSpread; // Max angle (in degrees) from the pure down direction
+    protected float maxAngleSpread; // Max angle (in degrees) from the pure cardinal direction
 
     protected const string playerTag = "Player";
     protected const string projectileTag = "Bullet";
@@ -54,7 +54,7 @@ public class CosmicObjectController : MonoBehaviour
         else if (collision.gameObject.CompareTag(projectileTag))
         {
             // Handle collision with projectile
-            Destroy(gameObject); // Destroy the object
+            collision.gameObject.SetActive(false); // deactivate the projectile on collision
         }
         else if (collision.gameObject.CompareTag(starsTag))
         {
