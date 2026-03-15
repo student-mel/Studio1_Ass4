@@ -157,10 +157,10 @@ TextureImporter:
       name: LowBar
       rect:
         serializedVersion: 2
-        x: 5343
-        y: 6815
-        width: 1826
-        height: 610
+        x: 1544
+        y: 2341
+        width: 297
+        height: 84
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -201,12 +201,12 @@ TextureImporter:
       name: Bar_0
       rect:
         serializedVersion: 2
-        x: 2233
+        x: 2335
         y: 6755
-        width: 583
+        width: 481
         height: 478
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -223,12 +223,12 @@ TextureImporter:
       name: Bar_1
       rect:
         serializedVersion: 2
-        x: 1607
-        y: 6911
-        width: 357
-        height: 158
+        x: 1454
+        y: 7039
+        width: 876
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -250,7 +250,7 @@ TextureImporter:
         width: 282
         height: 162
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
