@@ -15,5 +15,5 @@ MonoBehaviour:
   fireRate: 3
   speed: 10
   damage: 1
-  lifetime: 0.5
+  lifetime: 1
   movement: 0

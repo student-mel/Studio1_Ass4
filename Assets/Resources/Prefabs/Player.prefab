@@ -71,7 +71,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.6
+  m_Volume: 0.45
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -363,6 +363,7 @@ GameObject:
   - component: {fileID: -4536555062333180419}
   - component: {fileID: 689050546414155506}
   - component: {fileID: 7895376796238087308}
+  - component: {fileID: 3860127150757257553}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -501,7 +502,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22bea1ae6fce1514daca1f8c90317b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerFeedback
-  isHurt: 0
   playerSprite: {fileID: 6397780605840567212}
   audioSource: {fileID: -4536555062333180419}
   hurtSFX:
@@ -666,6 +666,43 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!70 &3860127150757257553
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8207095367107152535}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 448
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1.7066667, y: 2.5516667}
+  m_Direction: 0
 --- !u!1001 &1256081860961503058
 PrefabInstance:
   m_ObjectHideFlags: 0

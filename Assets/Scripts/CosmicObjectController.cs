@@ -59,7 +59,7 @@ public class CosmicObjectController : MonoBehaviour
         {
             // Handle collision with projectile
         }
-        else if (collision.gameObject.CompareTag(starsTag) || collision.gameObject.CompareTag(magnetableTag))
+        else if (collision.gameObject.CompareTag(starsTag))
         {
             Physics2D.IgnoreCollision(collision.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>()); // Ignore collision with stars
         }

@@ -88,6 +88,7 @@ public class ShootingStarSpawner : MonoBehaviour
                 GameObject shootingStar = GameObject.Instantiate(shootingStarPrefab, randomPosition, Quaternion.identity);
                 shootingStar.GetComponent<ShootingStarController>().moveSpeed = shootingStarSpeed;
                 shootingStar.GetComponent<ShootingStarController>().SetDirectionAndDeploy(Vector2.right);
+                Debug.Log(shootingStar);
             }
             else
             {
