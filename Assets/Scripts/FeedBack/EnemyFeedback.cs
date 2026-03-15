@@ -47,14 +47,30 @@ public class EnemyFeedback : MonoBehaviour
         
         GameObject vfx = Instantiate(deathVFXPrefab, transform.position, Quaternion.identity);
         Destroy(vfx, 2f);
-        
-        AudioClip clip = deathSFX[Random.Range(0, deathSFX.Length)];
-        audioSource.pitch = Random.Range(0.9f, 1.5f);
-        audioSource.PlayOneShot(clip);
 
-        if (destroyEnemyObject)
+        if (deathSFX != null && deathSFX.Length > 0)
         {
-            StartCoroutine(DestroyAfterDelay());
+            AudioClip clip = deathSFX[Random.Range(0, deathSFX.Length)];
+
+            if (clip != null)
+            {
+                GameObject tempAudio = new GameObject("TempEnemyDeathAudio");
+                tempAudio.transform.position = transform.position;
+
+                AudioSource tempSource = tempAudio.AddComponent<AudioSource>();
+                tempSource.clip = clip;
+                tempSource.volume = 1f;
+                tempSource.pitch = Random.Range(0.9f, 1.5f);
+                tempSource.spatialBlend = 0f;
+                tempSource.Play();
+
+                Destroy(tempAudio, clip.length + 0.2f);
+            }
+
+            if (destroyEnemyObject)
+            {
+                StartCoroutine(DestroyAfterDelay());
+            }
         }
 
     }
