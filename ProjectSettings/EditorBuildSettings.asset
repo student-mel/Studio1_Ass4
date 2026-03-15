@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/LevelOnePlaceholder.unity
     guid: 3c02b351c5a14254fbbc9c8657b8f3bf
   - enabled: 1
+    path: Assets/Scenes/LevelTwoPlaceholder.unity
+    guid: 17b07fc81ef55da4bb160ff37d2fed4a
+  - enabled: 1
     path: Assets/Scenes/LevelThreePlaceholder.unity
     guid: 14c492c0619adb448aeb2be5520cec42
   m_configObjects:
