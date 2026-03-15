@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class StarCollectFeedback : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class StarCollectFeedback : MonoBehaviour
     [SerializeField] private SpriteRenderer starSprite;
     [SerializeField] private bool hideStarOnCollect = true;
 
+    [SerializeField] private float destroyDelay = 0.6f;
     private bool hasPlayed = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,44 +24,63 @@ public class StarCollectFeedback : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isCollected && !previousIsCollected)
-        {
-            PlayCollectFeedback();
-        }
-        else if (!isCollected && previousIsCollected)
-        {
-            ResetFeedback();
-        }
+        //if (isCollected && !previousIsCollected)
+        //{
+        //    PlayCollectFeedback();
+        //}
+        //else if (!isCollected && previousIsCollected)
+        //{
+        //    ResetFeedback();
+        //}
 
-        previousIsCollected = isCollected;
+        //previousIsCollected = isCollected;
     }
 
     public void PlayCollectFeedback()
     {
-        if (hasPlayed) return;
-        hasPlayed = true;
+        if (isCollected) return;
+        isCollected = true;
 
-        GameObject vfx = Instantiate(collectVFXPrefab, transform.position, Quaternion.identity);
-        Destroy(vfx, 2f);
-        
-
-        if (collectSFX.Length > 0)
+        if (collectVFXPrefab != null)
         {
-            AudioClip clip = collectSFX[Random.Range(0, collectSFX.Length)];
-            audioSource.PlayOneShot(clip);
+            GameObject vfx = Instantiate(collectVFXPrefab, transform.position, Quaternion.identity);
+            Destroy(vfx, 2f);
         }
 
-        if (hideStarOnCollect)
+        if (collectSFX != null && collectSFX.Length > 0 && audioSource != null)
+        {
+            AudioClip clip = collectSFX[Random.Range(0, collectSFX.Length)];
+            if (clip != null)
+            {
+                audioSource.pitch = Random.Range(0.95f, 1.05f);
+                audioSource.PlayOneShot(clip);
+            }
+        }
+
+        StartCoroutine(CollectAndDestroy());
+    }
+
+    private IEnumerator CollectAndDestroy()
+    {
+        Collider2D col = GetComponent<Collider2D>();
+        if (col != null)
+        {
+            col.enabled = false;
+        }
+
+        if (starSprite != null)
         {
             starSprite.enabled = false;
         }
-    }
 
-    public void ResetFeedback()
-    {
-        hasPlayed = false;
-        starSprite.enabled = true;
-    }
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+        }
 
+        yield return new WaitForSeconds(destroyDelay);
+        Destroy(gameObject);
+    }
 
 }
