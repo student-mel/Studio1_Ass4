@@ -45,3 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelProgressionManager
   continueText: {fileID: 0}
+  retryButton: {fileID: 0}
+  menuButton: {fileID: 0}
+  exitButton: {fileID: 0}
