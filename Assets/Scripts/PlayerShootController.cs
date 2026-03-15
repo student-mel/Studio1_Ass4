@@ -22,6 +22,12 @@ public class PlayerShootController : MonoBehaviour
     private bool isShooting = false;
     private float nextFireTime = 0f;
     
+    [Header("Audio")]
+    [SerializeField] AudioClip[] audioClips;
+    private AudioSource audioSource;
+    private int audioIndex = 0;
+    private int direction = 1;
+    
     [Header("Debug")]
     public bool debug;
 
@@ -29,6 +35,7 @@ public class PlayerShootController : MonoBehaviour
     {
         // unparent from player
         transform.parent =  null;
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnEnable()
@@ -119,6 +126,8 @@ public class PlayerShootController : MonoBehaviour
         bullet.SetDir(shootDir);
         bullet.transform.position = shootOrigin.position;
         bullet.gameObject.SetActive(true);
+        
+        PlayAudio();
     }
 
     public void EnqueueBullet(BulletBehaviour bullet)
@@ -145,6 +154,16 @@ public class PlayerShootController : MonoBehaviour
             if (particles.isPlaying)
                 particles.Stop();
         }
+    }
+
+    private void PlayAudio()
+    {
+        audioSource.PlayOneShot(audioClips[audioIndex]);
+
+        audioIndex += direction;
+
+        if (audioIndex == audioClips.Length - 1 || audioIndex == 0)
+            direction *= -1;
     }
 }
 
