@@ -9,7 +9,7 @@ public class PlayerMoveController : MonoBehaviour
     public InputReader inputReader;
     private Rigidbody2D rb;
     private Animator animator;
-    private SpriteRenderer spriteRenderer;
+    private SpriteRenderer[] spriteRenderers;
 
     [Header("Settings")] 
     public float speed = 5;
@@ -18,7 +18,7 @@ public class PlayerMoveController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
     }
 
     private void OnEnable()
@@ -37,8 +37,20 @@ public class PlayerMoveController : MonoBehaviour
         //Debug.Log(arg0.normalized);
         animator.SetFloat("AbsMove", rb.linearVelocity.magnitude);
         if (rb.linearVelocity.x > 0)
-            spriteRenderer.flipX = false;
+            FlipSprites(false);
         else if (rb.linearVelocity.x < 0)
-            spriteRenderer.flipX = true;
+            FlipSprites(true);
+    }
+
+    void FlipSprites(bool flip)
+    {
+        /*foreach (SpriteRenderer spriteRenderer in spriteRenderers)
+        {
+            spriteRenderer.flipX = flip;
+        }*/
+        
+        Vector3 theScale = transform.localScale;
+        theScale.x = flip ? -1 : 1;
+        transform.localScale = theScale;
     }
 }

@@ -34,7 +34,6 @@ public class BulletBehaviour : MonoBehaviour
     private void Update()
     {
         rb.linearVelocity = shootDir * stats.speed;
-        Debug.Log(rb.linearVelocity);
     }
 
     private void OnDisable()
