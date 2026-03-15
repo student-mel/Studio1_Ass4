@@ -19,7 +19,16 @@ public class FallingStarController : CosmicObjectController
         if (collision.gameObject.CompareTag(playerTag))
         {
             scoreHandler.AddScore(fallingStarScore); // Increment the player's score when they collect a falling star
-            Destroy(gameObject); // Destroy the falling star
+
+            StarCollectFeedback collectFeedback = GetComponent<StarCollectFeedback>();
+            if (collectFeedback != null)
+            {
+                collectFeedback.PlayCollectFeedback();
+            }
+            else
+            {
+                Destroy(gameObject); // Destroy the falling star
+            }
         }
         else if (collision.gameObject.CompareTag(projectileTag))
         {
