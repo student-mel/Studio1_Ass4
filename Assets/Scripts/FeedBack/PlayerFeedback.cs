@@ -3,7 +3,6 @@ using System.Collections;
 
 public class PlayerFeedback : MonoBehaviour
 {
-    [SerializeField] private bool isHurt = false;
     private bool previousIsHurt = false;
 
     [SerializeField] private SpriteRenderer playerSprite;
@@ -15,6 +14,7 @@ public class PlayerFeedback : MonoBehaviour
     [SerializeField] private float flashDuration = 0.08f;
 
     private Color originalColor;
+    private Coroutine flashRoutine;
     private bool hasPlayed = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -26,22 +26,22 @@ public class PlayerFeedback : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isHurt && !previousIsHurt)
-        {
-            PlayHitFeedback();
-        }
-        else if (!isHurt && previousIsHurt)
-        {
-            ResetFeedback();
-        }
+        //if (isHurt && !previousIsHurt)
+        //{
+        //    PlayHitFeedback();
+        //}
+        //else if (!isHurt && previousIsHurt)
+        //{
+        //    ResetFeedback();
+        //}
 
-        previousIsHurt = isHurt;
+        //previousIsHurt = isHurt;
     }
 
     public void PlayHitFeedback()
     {
-        if (hasPlayed) return;
-        hasPlayed = true;
+        //if (hasPlayed) return;
+        //hasPlayed = true;
 
 
         if (hurtSFX.Length > 0)
@@ -50,8 +50,12 @@ public class PlayerFeedback : MonoBehaviour
             audioSource.pitch = Random.Range(0.9f, 1.3f);
             audioSource.PlayOneShot(clip);
         }
+        if (flashRoutine != null)
+        {
+            StopCoroutine(flashRoutine);
+        }
 
-        StartCoroutine(FlashSprite());
+        flashRoutine = StartCoroutine(FlashSprite());
     }
 
     IEnumerator FlashSprite()
@@ -64,12 +68,13 @@ public class PlayerFeedback : MonoBehaviour
             playerSprite.color = originalColor;
             yield return new WaitForSeconds(flashDuration);
         }
+        flashRoutine = null;
     }
 
-    public void ResetFeedback()
-    {
-        hasPlayed = false;
+    //public void ResetFeedback()
+    //{
+    //    hasPlayed = false;
 
-        playerSprite.color = originalColor;
-    }
+    //    playerSprite.color = originalColor;
+    //}
 }
