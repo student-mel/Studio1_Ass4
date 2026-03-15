@@ -119,6 +119,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &26658371 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3391153299858363666, guid: b96158549130f634ca85d451cdc960a3, type: 3}
+  m_PrefabInstance: {fileID: 1159712029}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c827f9ce0326d3e4087a453919a99f62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpellsManager
 --- !u!61 &128939233 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 351175482758886954, guid: 84238b87a3333d049a6f43210def0914, type: 3}
@@ -731,42 +742,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2945025046321221648, guid: ccc79e133f0911b449cc1b2f673b5be0, type: 3}
+      propertyPath: spellManager
+      value: 
+      objectReference: {fileID: 26658371}
     - target: {fileID: 3488476163652202187, guid: ccc79e133f0911b449cc1b2f673b5be0, type: 3}
       propertyPath: m_Name
       value: MeteorSpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 8148857172272678133, guid: ccc79e133f0911b449cc1b2f673b5be0, type: 3}
+      propertyPath: spawnerBounds1
+      value: 
+      objectReference: {fileID: 128939233}
+    - target: {fileID: 8148857172272678133, guid: ccc79e133f0911b449cc1b2f673b5be0, type: 3}
+      propertyPath: spawnerBounds2
+      value: 
+      objectReference: {fileID: 903197722}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3488476163652202187, guid: ccc79e133f0911b449cc1b2f673b5be0, type: 3}
-      insertIndex: 3
-      addedObject: {fileID: 2573105300510196244}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc79e133f0911b449cc1b2f673b5be0, type: 3}
---- !u!1 &2573105300510196243 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3488476163652202187, guid: ccc79e133f0911b449cc1b2f673b5be0, type: 3}
-  m_PrefabInstance: {fileID: 2573105300510196242}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2573105300510196244
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2573105300510196243}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 851f4bd4bfa35274999de7a9cd54908e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShootingStarSpawner
-  shootingStarPrefab: {fileID: 2496555588687682050, guid: 6bbec16b40d83e64480c4190f8887de3, type: 3}
-  shootingStarSpeed: 10
-  minTimeForSpawn: 2
-  maxTimeForSpawn: 10
-  spawnerBounds1: {fileID: 128939233}
-  spawnerBounds2: {fileID: 903197722}
-  leftRightRatio: 0.5
 --- !u!1001 &3849454929301066593
 PrefabInstance:
   m_ObjectHideFlags: 0

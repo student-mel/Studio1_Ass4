@@ -11,6 +11,7 @@ public class CosmicObjectController : MonoBehaviour
     protected const string playerTag = "Player";
     protected const string projectileTag = "Bullet";
     protected const string starsTag = "Cosmic";
+    protected const string magnetableTag = "Magnetable";
     protected const string wallTag = "Wall";
     protected const string groundTag = "Ground";
 
@@ -55,9 +56,9 @@ public class CosmicObjectController : MonoBehaviour
         {
             // Handle collision with projectile
         }
-        else if (collision.gameObject.CompareTag(starsTag))
+        else if (collision.gameObject.CompareTag(starsTag) || collision.gameObject.CompareTag(magnetableTag))
         {
-            //Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>()); // Ignore collision with stars
+            Physics2D.IgnoreCollision(collision.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>()); // Ignore collision with stars
         }
         else if (collision.gameObject.CompareTag(wallTag))
         {
