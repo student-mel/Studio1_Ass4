@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3792847821930063399}
   m_Layer: 6
   m_Name: FallingStar
-  m_TagString: Cosmic
+  m_TagString: Magnetable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

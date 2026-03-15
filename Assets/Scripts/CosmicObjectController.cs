@@ -11,8 +11,12 @@ public class CosmicObjectController : MonoBehaviour
     protected const string playerTag = "Player";
     protected const string projectileTag = "Bullet";
     protected const string starsTag = "Cosmic";
+    protected const string magnetableTag = "Magnetable";
     protected const string wallTag = "Wall";
     protected const string groundTag = "Ground";
+
+    [Header("Meteor Impact Audio")]
+    [SerializeField] private AudioClip[] meteorImpactClips;
 
     protected Rigidbody2D rb;
     void Awake()
@@ -55,9 +59,9 @@ public class CosmicObjectController : MonoBehaviour
         {
             // Handle collision with projectile
         }
-        else if (collision.gameObject.CompareTag(starsTag))
+        else if (collision.gameObject.CompareTag(starsTag) || collision.gameObject.CompareTag(magnetableTag))
         {
-            //Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>()); // Ignore collision with stars
+            Physics2D.IgnoreCollision(collision.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>()); // Ignore collision with stars
         }
         else if (collision.gameObject.CompareTag(wallTag))
         {
@@ -71,6 +75,13 @@ public class CosmicObjectController : MonoBehaviour
         {
             // Handle collision with the ground
             //Debug.Log("Hit ground with meteor");
+
+            if (meteorImpactClips.Length > 0)
+            {
+                AudioClip clip = meteorImpactClips[Random.Range(0, meteorImpactClips.Length)];
+                AudioSource.PlayClipAtPoint(clip, transform.position);
+            }
+
             Destroy(gameObject); // Destroy the object since it's no longer relevant to the player
         }
     }

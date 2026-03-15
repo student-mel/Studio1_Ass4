@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 170888624277739847}
   - component: {fileID: 2945025046321221648}
-  - component: {fileID: 3302324832150648985}
+  - component: {fileID: 8148857172272678133}
   - component: {fileID: 6752456723942382104}
   m_Layer: 0
   m_Name: MeteorSpawner
@@ -52,7 +52,9 @@ MonoBehaviour:
   meteorSpeed: 5
   fallingStarToMeteorRatio: 0.5
   spawnFrequency: 10
---- !u!114 &3302324832150648985
+  spellManager: {fileID: 0}
+  meteorsShot: 0
+--- !u!114 &8148857172272678133
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
