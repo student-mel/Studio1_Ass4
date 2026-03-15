@@ -9,7 +9,6 @@ TagManager:
   - Cosmic
   - Bullet
   - ShootingStarSpawner
-  - Magnetable
   layers:
   - Default
   - TransparentFX

@@ -11,21 +11,15 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Amitesh.unity
     guid: c75e109a8084cde419252ad80b892c70
-  - enabled: 0
-    path: Assets/Scenes/GameScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 0
-    path: Assets/Scenes/LevelOne.unity
-    guid: 90ef0b6dd0a6cbf4683a58b8817bf6cb
-  - enabled: 0
-    path: Assets/Scenes/LevelTwo.unity
-    guid: 370c01166617e2241ac3d64bf592a430
   - enabled: 1
-    path: Assets/Scenes/LevelOnePlaceholder.unity
-    guid: 3c02b351c5a14254fbbc9c8657b8f3bf
+    path: Assets/Scenes/Level 1.unity
+    guid: 5640432dcdd200847a5b6712c5828cf4
   - enabled: 1
-    path: Assets/Scenes/LevelThreePlaceholder.unity
-    guid: 14c492c0619adb448aeb2be5520cec42
+    path: Assets/Scenes/Level 2.unity
+    guid: 4b8be45ad86269447bf37ea55b4a9783
+  - enabled: 1
+    path: Assets/Scenes/Level 3.unity
+    guid: 123476d115540ab438552aadee4ba0ff
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

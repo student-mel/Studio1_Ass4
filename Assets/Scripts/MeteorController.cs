@@ -12,6 +12,10 @@ public class MeteorController : CosmicObjectController
         scoreHandler = GameObject.Find("Canvas").GetComponent<ScoreHandler>();
         maxAngleSpread = 45f;
         DeployObject(Vector2.down);
+
+        Vector2 dir = rb.linearVelocity.normalized;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)
