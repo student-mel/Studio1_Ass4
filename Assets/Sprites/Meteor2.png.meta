@@ -1,13 +1,16 @@
 fileFormatVersion: 2
-guid: 4f66ec021b9277b44ab170fc072d97af
+guid: 83df2151657d68847b7da03193638f99
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3972488667177137343
-    second: Meteor 1_0
+      213: -5964804713036057234
+    second: Meteor2_0
   - first:
-      213: 6254507034211598025
-    second: Meteor 1_1
+      213: -437390170268772071
+    second: Meteor2_1
+  - first:
+      213: 537934125552355045
+    second: Meteor2_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,32 +103,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WindowsStoreApps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -142,45 +119,67 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Meteor 1_0
+      name: Meteor2_0
       rect:
         serializedVersion: 2
-        x: 255
-        y: 1599
-        width: 322
-        height: 418
+        x: 0
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fb4bb59456d112730800000000000000
-      internalID: 3972488667177137343
+      spriteID: e65f8e467b1c83da0800000000000000
+      internalID: -5964804713036057234
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Meteor 1_1
+      name: Meteor2_1
       rect:
         serializedVersion: 2
-        x: 447
-        y: 575
-        width: 322
-        height: 418
+        x: 16
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9ce3d5382097cc650800000000000000
-      internalID: 6254507034211598025
+      spriteID: 919d1e025f31ee9f0800000000000000
+      internalID: -437390170268772071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Meteor2_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e6cb12bc30277700800000000000000
+      internalID: 537934125552355045
       vertices: []
       indices: 
       edges: []
@@ -189,7 +188,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 30b8c9767ce25e746a02cf4d311638d4
     internalID: 0
     vertices: []
     indices: 
@@ -197,10 +196,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":16.0,"y":16.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Meteor 1_0: 3972488667177137343
-      Meteor 1_1: 6254507034211598025
+      Meteor2_0: -5964804713036057234
+      Meteor2_1: -437390170268772071
+      Meteor2_2: 537934125552355045
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
