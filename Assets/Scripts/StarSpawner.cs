@@ -43,6 +43,9 @@ public class StarSpawner : MonoBehaviour
         spawnInterval = 1f/spawnFrequency; // Calculate the time between spawns based on the frequency
         //spawnTimer = Time.time + spawnInterval; // Initialize the spawn timer
         spawnTimer = 0f;
+        
+        if (spellManager == null)
+            spellManager = FindObjectOfType<SpellsManager>();
     }
 
     // Update is called once per frame
