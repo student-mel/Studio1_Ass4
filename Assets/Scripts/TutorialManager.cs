@@ -119,7 +119,7 @@ public class TutorialManager : MonoBehaviour
 
     void EndTutorial()
     {
-        tutorialText.text = "";
+        tutorialText.text = "Press # to return to the main menu";
         currentStep = TutorialStep.Complete;
     }
 }
