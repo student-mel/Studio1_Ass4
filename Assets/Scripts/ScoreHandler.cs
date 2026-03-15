@@ -32,6 +32,7 @@ public class ScoreHandler : MonoBehaviour
     {
         score = 0;
         scoreText.color = Color.purple; //set the text color to something that's visible against the bar
+        winGameOverText.enabled = false; // Hide the win/game over text initially
     }
 
     // Update is called once per frame

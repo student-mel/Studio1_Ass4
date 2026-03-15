@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class TimerHandler : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class TimerHandler : MonoBehaviour
     private bool timerIsRunning = false; // Flag to check if the timer is running
 
     [SerializeField] private TextMeshProUGUI winGameOverText;
+    [SerializeField] private Button retryButton;
+    [SerializeField] private Button menuButton;
+    [SerializeField] private Button exitButton;
     void Awake()
     {
         if (timerText == null)
@@ -22,10 +26,23 @@ public class TimerHandler : MonoBehaviour
         {
             winGameOverText = GameObject.Find("WinGameOverText").GetComponent<TextMeshProUGUI>(); // Find the TextMeshProUGUI component for win/game over text in the scene
         }
+        if (retryButton == null)
+        {
+            retryButton = GameObject.Find("retryButton").GetComponent<Button>(); // Find the Button component for the retry button in the scene
+        }
+        if (menuButton == null)
+        {
+            menuButton = GameObject.Find("menuButton").GetComponent<Button>(); // Find the Button component for the retry button in the scene
+        }
+        if (exitButton == null)
+        {
+            exitButton = GameObject.Find("exitButton").GetComponent<Button>(); // Find the Button component for the retry button in the scene
+        }
     }
     void Start()
     {
         timeRemaining = (float)timeLimit; // Initialize the remaining time to the time limit 
+        winGameOverText.enabled = false; // Hide the win/game over text initially
         timerIsRunning = true; // Start the timer
     }
 
@@ -42,6 +59,9 @@ public class TimerHandler : MonoBehaviour
             winGameOverText.enabled = true; // Show the win/game over text
             winGameOverText.text = "Time Out - Game Over!";
             Time.timeScale = 0f; // Pause the game
+            retryButton.gameObject.SetActive(true); // Enable the retry button
+            menuButton.gameObject.SetActive(true); // Enable the menu button
+            exitButton.gameObject.SetActive(true); // Enable the exit button
         }
     }
 
