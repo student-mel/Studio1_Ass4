@@ -8,6 +8,8 @@ public class PlayerMoveController : MonoBehaviour
 {
     public InputReader inputReader;
     private Rigidbody2D rb;
+    private Animator animator;
+    private SpriteRenderer spriteRenderer;
 
     [Header("Settings")] 
     public float speed = 5;
@@ -15,6 +17,8 @@ public class PlayerMoveController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void OnEnable()
@@ -31,5 +35,10 @@ public class PlayerMoveController : MonoBehaviour
     {
         rb.linearVelocity = arg0 * speed;
         //Debug.Log(arg0.normalized);
+        animator.SetFloat("AbsMove", rb.linearVelocity.magnitude);
+        if (rb.linearVelocity.x > 0)
+            spriteRenderer.flipX = false;
+        else if (rb.linearVelocity.x < 0)
+            spriteRenderer.flipX = true;
     }
 }

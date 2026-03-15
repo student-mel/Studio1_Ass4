@@ -34,14 +34,7 @@ public class BulletBehaviour : MonoBehaviour
     private void Update()
     {
         rb.linearVelocity = shootDir * stats.speed;
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        /*if (other.CompareTag(ShootableTag))
-        {
-            gameObject.SetActive(false);
-        }*/
+        Debug.Log(rb.linearVelocity);
     }
 
     private void OnDisable()
@@ -61,7 +54,7 @@ public class BulletBehaviour : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
