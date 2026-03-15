@@ -10,7 +10,7 @@ public class PlayerShootController : MonoBehaviour
 
     [Header("Projectile Settings")] 
     [SerializeField] private BulletStats bulletStats;
-    [SerializeField] private Transform shootOrigin;
+    [SerializeField] public Transform shootOrigin;
     private Vector2 shootDir;
     
     [Header("Projectile Pooling")]
@@ -35,6 +35,8 @@ public class PlayerShootController : MonoBehaviour
         inputReader.ShootStoppedEvent += ShootStopEvent;
         inputReader.MoveEvent += MoveEvent;
         CreatePool();
+        
+        shootDir = Vector2.up;;
     }
 
     private void OnDisable()

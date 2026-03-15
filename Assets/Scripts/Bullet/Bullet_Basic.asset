@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 008fa88e58436884d97a7edfa865a7e6, type: 3}
   m_Name: Bullet_Basic
   m_EditorClassIdentifier: Assembly-CSharp::BulletStatsScriptableObject
-  fireRate: 5
-  speed: 10
+  fireRate: 3
+  speed: 6
   damage: 1
   lifetime: 1
   movement: 0
