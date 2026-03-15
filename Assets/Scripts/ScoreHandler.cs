@@ -48,6 +48,11 @@ public class ScoreHandler : MonoBehaviour
         }
     }
 
+    public int GetScore()
+    {
+        return score; // For score level requirement
+    }
+
     public void AddScore(int Addingscore)
     {
         score += Addingscore;
