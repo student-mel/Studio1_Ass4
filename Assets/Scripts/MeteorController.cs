@@ -24,6 +24,13 @@ public class MeteorController : CosmicObjectController
         if (collision.gameObject.CompareTag(playerTag))
         {
             scoreHandler.AddScore(-meteorScore); // Decrement the player's score when they get hit by a meteor
+
+            PlayerFeedback playerFeedback = collision.GetComponent<PlayerFeedback>();
+            if (playerFeedback != null)
+            {
+                playerFeedback.PlayHitFeedback();
+            }
+
             Destroy(gameObject); // Destroy the meteor
         }
         else if (collision.gameObject.CompareTag(projectileTag))
