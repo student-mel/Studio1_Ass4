@@ -37,7 +37,17 @@ public class MeteorController : CosmicObjectController
         {
             scoreHandler.AddScore(meteorScore);
             spawner.MeteorDestroyed(transform);
-            Destroy(gameObject); // Destroy the meteor
+
+            EnemyFeedback enemyFeedback = GetComponent<EnemyFeedback>();
+            if (enemyFeedback != null)
+            {
+                enemyFeedback.PlayDeathFeedback();
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+
             collision.gameObject.SetActive(false); // deactivate the projectile on collision
         }
     }
