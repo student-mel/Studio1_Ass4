@@ -22,6 +22,10 @@ public class StarSpawner : MonoBehaviour
     private float spawnTimer; // Timer to track time since last spawn
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
+    [Header("Meteor Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip[] meteorSpawnClips;
+
     public SpellsManager spellManager;
     public int meteorsShot = 0;
     
@@ -69,6 +73,12 @@ public class StarSpawner : MonoBehaviour
                 MeteorController m = meteor.GetComponent<MeteorController>();
                 m.moveSpeed = meteorSpeed;
                 m.spawner = this;
+
+                if (meteorSpawnClips.Length > 0 && audioSource != null)
+                {
+                    AudioClip clip = meteorSpawnClips[Random.Range(0, meteorSpawnClips.Length)];
+                    audioSource.PlayOneShot(clip);
+                }
             }
 
             // Schedule the next spawn here

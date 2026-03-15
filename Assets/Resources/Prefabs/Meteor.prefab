@@ -171,4 +171,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   moveSpeed: 5
   spawner: {fileID: 0}
+  audioSource: {fileID: 0}
+  meteorImpactClips:
+  - {fileID: 8300000, guid: 6e3ee60c8080a694b9093bac4c98c4b1, type: 3}
+  - {fileID: 8300000, guid: d7c57b88a2bebb64e8d55200ab765bce, type: 3}
+  - {fileID: 8300000, guid: e8562466649bd614087da14aa98c214e, type: 3}
+  - {fileID: 8300000, guid: 45cdccad4978ec543a130989fa76f121, type: 3}
   meteorScore: 5

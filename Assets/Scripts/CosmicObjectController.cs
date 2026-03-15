@@ -15,6 +15,9 @@ public class CosmicObjectController : MonoBehaviour
     protected const string wallTag = "Wall";
     protected const string groundTag = "Ground";
 
+    [Header("Meteor Impact Audio")]
+    [SerializeField] private AudioClip[] meteorImpactClips;
+
     protected Rigidbody2D rb;
     void Awake()
     {
@@ -72,6 +75,13 @@ public class CosmicObjectController : MonoBehaviour
         {
             // Handle collision with the ground
             //Debug.Log("Hit ground with meteor");
+
+            if (meteorImpactClips.Length > 0)
+            {
+                AudioClip clip = meteorImpactClips[Random.Range(0, meteorImpactClips.Length)];
+                AudioSource.PlayClipAtPoint(clip, transform.position);
+            }
+
             Destroy(gameObject); // Destroy the object since it's no longer relevant to the player
         }
     }
