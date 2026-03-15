@@ -35,6 +35,8 @@ public class PlayerShootController : MonoBehaviour
         inputReader.ShootStoppedEvent += ShootStopEvent;
         inputReader.MoveEvent += MoveEvent;
         CreatePool();
+        
+        shootDir = Vector2.up;;
     }
 
     private void OnDisable()
