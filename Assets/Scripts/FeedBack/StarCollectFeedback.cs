@@ -47,13 +47,23 @@ public class StarCollectFeedback : MonoBehaviour
             Destroy(vfx, 2f);
         }
 
-        if (collectSFX != null && collectSFX.Length > 0 && audioSource != null)
+        if (collectSFX != null && collectSFX.Length > 0)
         {
             AudioClip clip = collectSFX[Random.Range(0, collectSFX.Length)];
+
             if (clip != null)
             {
-                audioSource.pitch = Random.Range(0.95f, 1.05f);
-                audioSource.PlayOneShot(clip);
+                GameObject tempAudio = new GameObject("TempStarCollectAudio");
+                tempAudio.transform.position = transform.position;
+
+                AudioSource tempSource = tempAudio.AddComponent<AudioSource>();
+                tempSource.clip = clip;
+                tempSource.volume = 1f;
+                tempSource.pitch = Random.Range(0.95f, 1.05f);
+                tempSource.spatialBlend = 0f;
+                tempSource.Play();
+
+                Destroy(tempAudio, clip.length + 0.2f);
             }
         }
 
