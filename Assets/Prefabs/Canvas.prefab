@@ -1081,7 +1081,7 @@ MonoBehaviour:
   timerText: {fileID: 5985455415579386891}
   timeLimit: 60
   winGameOverText: {fileID: 7463589795642966617}
-  retryButton: {fileID: 0}
+  retryButton: {fileID: 5694518940131206221}
   menuButton: {fileID: 7662808926120972275}
   exitButton: {fileID: 858995740656893170}
 --- !u!114 &8616514001384971122
