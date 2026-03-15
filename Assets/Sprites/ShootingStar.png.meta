@@ -1,16 +1,28 @@
 fileFormatVersion: 2
-guid: e5285f453a693e64283b997c297216ad
+guid: 006c485bfccd04a628cad1da2dc92861
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6888756438569675735
-    second: New Piskel (1)_0
+      213: -1750559015080959364
+    second: ShootingStar_0
   - first:
-      213: 9173839873224666002
-    second: New Piskel (1)_1
+      213: 5097427417170848326
+    second: ShootingStar_1
   - first:
-      213: -745645855993587873
-    second: New Piskel (1)_2
+      213: -7832311200584198081
+    second: ShootingStar_2
+  - first:
+      213: -1789887714271847416
+    second: ShootingStar_3
+  - first:
+      213: -2767186041196030324
+    second: ShootingStar_4
+  - first:
+      213: -1169483118600578624
+    second: ShootingStar_5
+  - first:
+      213: -8503242987984062234
+    second: ShootingStar_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -43,7 +55,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -102,163 +114,159 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WindowsStoreApps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Manabar1
+      name: ShootingStar_0
       rect:
         serializedVersion: 2
-        x: 735
-        y: 6814
-        width: 706
-        height: 611
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9249ede64883660a0800000000000000
-      internalID: -6888756438569675735
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: LowBar
-      rect:
-        serializedVersion: 2
-        x: 5343
-        y: 6815
-        width: 1826
-        height: 610
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 29beed572c6005f70800000000000000
-      internalID: 9173839873224666002
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MediumBar
-      rect:
-        serializedVersion: 2
-        x: 735
-        y: 2207
-        width: 1826
-        height: 610
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f5792496b0fe6a5f0800000000000000
-      internalID: -745645855993587873
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bar_0
-      rect:
-        serializedVersion: 2
-        x: 2233
-        y: 6755
-        width: 583
-        height: 478
+        x: 0
+        y: 13
+        width: 19
+        height: 27
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 1a1da3fe22370984da93f7fad444e159
-      internalID: -373849637
+      spriteID: c72edb3c9d3c4b7e0800000000000000
+      internalID: -1750559015080959364
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bar_1
+      name: ShootingStar_1
       rect:
         serializedVersion: 2
-        x: 1607
-        y: 6911
-        width: 357
-        height: 158
+        x: 19
+        y: 34
+        width: 7
+        height: 7
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 5a68ae5d6b8da624eb6fd96cd3d99cf0
-      internalID: -1428623892
+      spriteID: 64a2ec48a33bdb640800000000000000
+      internalID: 5097427417170848326
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bar_2
+      name: ShootingStar_2
       rect:
         serializedVersion: 2
-        x: 6386
-        y: 6911
-        width: 282
-        height: 162
+        x: 33
+        y: 33
+        width: 9
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: ef8193d9281c28d43b4ead9dabad90c5
-      internalID: -1247727807
+      spriteID: f389dded57a0e4390800000000000000
+      internalID: -7832311200584198081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootingStar_3
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 13
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80c9dfa6b9a0927e0800000000000000
+      internalID: -1789887714271847416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootingStar_4
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 14
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c86571be4faf899d0800000000000000
+      internalID: -2767186041196030324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootingStar_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 17
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c91ff0cc4925cfe0800000000000000
+      internalID: -1169483118600578624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootingStar_6
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 0
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e8f066fd896ef980800000000000000
+      internalID: -8503242987984062234
       vertices: []
       indices: 
       edges: []
@@ -267,7 +275,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 0a013c8406e0c8c46853e8db3a701850
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -277,13 +285,13 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Bar_0: -373849637
-      Bar_1: -1428623892
-      Bar_2: -1247727807
-      Bar_3: -1326360829
-      LowBar: 9173839873224666002
-      Manabar1: -6888756438569675735
-      MediumBar: -745645855993587873
+      ShootingStar_0: -1750559015080959364
+      ShootingStar_1: 5097427417170848326
+      ShootingStar_2: -7832311200584198081
+      ShootingStar_3: -1789887714271847416
+      ShootingStar_4: -2767186041196030324
+      ShootingStar_5: -1169483118600578624
+      ShootingStar_6: -8503242987984062234
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
