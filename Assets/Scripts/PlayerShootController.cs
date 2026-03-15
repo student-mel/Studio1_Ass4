@@ -12,6 +12,7 @@ public class PlayerShootController : MonoBehaviour
     [SerializeField] private BulletStats bulletStats;
     [SerializeField] public Transform shootOrigin;
     [SerializeField] private Animator handAnim;
+    [SerializeField] private ParticleSystem particles;
     private Vector2 shootDir;
     
     [Header("Projectile Pooling")]
@@ -71,6 +72,7 @@ public class PlayerShootController : MonoBehaviour
     {
         handAnim.SetBool("isShooting", isShooting);
         handAnim.SetBool("isDiagonal", Mathf.Abs(shootDir.x) > 0.1f);
+        PlayParticles(isShooting);
     }
 
     IEnumerator Shoot()
@@ -129,6 +131,20 @@ public class PlayerShootController : MonoBehaviour
     {
         if (debug)
             Debug.Log(message);
+    }
+
+    private void PlayParticles(bool play)
+    {
+        if (play)
+        {
+            if (!particles.isPlaying)
+                particles.Play();
+        }
+        else
+        {
+            if (particles.isPlaying)
+                particles.Stop();
+        }
     }
 }
 
