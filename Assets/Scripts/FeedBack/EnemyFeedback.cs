@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class EnemyFeedback : MonoBehaviour
 {
@@ -7,10 +8,13 @@ public class EnemyFeedback : MonoBehaviour
     [SerializeField] private AudioClip[] deathSFX;
 
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] private bool destroyEnemyObject = false;
+    [SerializeField] private bool destroyEnemyObject = true;
+    [SerializeField] private float destroyDelay = 0.15f;
+
     private bool hasPlayed = false;
 
-    [SerializeField] private bool isDead = false;
+    private bool isDying = false;
+    //[SerializeField] private bool isDead = false;
     private bool previousIsDead = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -22,22 +26,22 @@ public class EnemyFeedback : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isDead && !previousIsDead)
-        {
-            PlayDeathFeedback();
-        }
-        else if (!isDead && previousIsDead)
-        {
-            ResetFeedback();
-        }
+        //if (isDead && !previousIsDead)
+        //{
+        //    PlayDeathFeedback();
+        //}
+        //else if (!isDead && previousIsDead)
+        //{
+        //    ResetFeedback();
+        //}
 
-        previousIsDead = isDead;
+        //previousIsDead = isDead;
     }
 
     public void PlayDeathFeedback()
     {
-        if (hasPlayed) return;
-        hasPlayed = true;
+        if (isDying) return;
+        isDying = true;
 
 
         
@@ -50,13 +54,26 @@ public class EnemyFeedback : MonoBehaviour
 
         if (destroyEnemyObject)
         {
-            Destroy(gameObject);
+            StartCoroutine(DestroyAfterDelay());
         }
 
     }
 
-    public void ResetFeedback()
+    private IEnumerator DestroyAfterDelay()
     {
-        hasPlayed = false;
+        Collider2D col = GetComponent<Collider2D>();
+        col.enabled = false;
+        
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        sr.enabled = false;
+        
+
+        yield return new WaitForSeconds(destroyDelay);
+        Destroy(gameObject);
     }
+
+    //public void ResetFeedback()
+    //{
+    //    hasPlayed = false;
+    //}
 }
