@@ -1,22 +1,17 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.InputSystem; // Required for new Input System
 
 public class LevelProgressionManager : MonoBehaviour
 {
-    [Header("References")]
-    public ScoreHandler scoreHandler;
+    [Header("UI")]
     public TextMeshProUGUI continueText;
 
     private bool levelComplete = false;
 
     void Start()
     {
-        if (scoreHandler == null)
-        {
-            scoreHandler = GameObject.Find("Canvas").GetComponent<ScoreHandler>();
-        }
-
         if (continueText != null)
         {
             continueText.enabled = false;
@@ -25,18 +20,16 @@ public class LevelProgressionManager : MonoBehaviour
 
     void Update()
     {
-        if (!levelComplete && scoreHandler.GetScore() >= scoreHandler.targetScore)
-        {
-            LevelComplete();
-        }
+        if (!levelComplete) return;
 
-        if (levelComplete && Input.GetKeyDown(KeyCode.Return))
+        // Use the new Input System to detect ENTER / Return
+        if (Keyboard.current != null && Keyboard.current.enterKey.wasPressedThisFrame)
         {
             LoadNextLevel();
         }
     }
 
-    void LevelComplete()
+    public void TriggerLevelComplete()
     {
         levelComplete = true;
 
@@ -45,8 +38,6 @@ public class LevelProgressionManager : MonoBehaviour
             continueText.enabled = true;
             continueText.text = "Press ENTER to continue";
         }
-
-        Time.timeScale = 0f;
     }
 
     void LoadNextLevel()

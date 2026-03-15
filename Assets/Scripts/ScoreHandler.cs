@@ -43,7 +43,9 @@ public class ScoreHandler : MonoBehaviour
         if (score >= targetScore)
         {
             winGameOverText.enabled = true; // Show the win/game over text
-            winGameOverText.text = "You Win!";
+            winGameOverText.text = "Level Complete!";
+
+            FindObjectOfType<LevelProgressionManager>().TriggerLevelComplete();
             Time.timeScale = 0f; // Pause the game
         }
     }
