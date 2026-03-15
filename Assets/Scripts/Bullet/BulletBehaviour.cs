@@ -45,6 +45,8 @@ public class BulletBehaviour : MonoBehaviour
     public void SetDir(Vector2 dir)
     {
         shootDir = dir;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     private IEnumerator DisableAfterLifetime()
