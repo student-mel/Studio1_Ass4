@@ -31,7 +31,7 @@ public class ScoreHandler : MonoBehaviour
     void Start()
     {
         score = 0;
-        scoreText.color = Color.purple; //set the text color to something that's visible against the bar
+        //scoreText.color = Color.purple; //set the text color to something that's visible against the bar
         winGameOverText.enabled = false; // Hide the win/game over text initially
     }
 

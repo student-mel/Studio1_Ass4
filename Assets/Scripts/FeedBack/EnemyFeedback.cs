@@ -46,7 +46,7 @@ public class EnemyFeedback : MonoBehaviour
 
         
         GameObject vfx = Instantiate(deathVFXPrefab, transform.position, Quaternion.identity);
-        Destroy(vfx, 2f);
+        //Destroy(vfx, 2f);
 
         if (deathSFX != null && deathSFX.Length > 0)
         {
@@ -59,7 +59,7 @@ public class EnemyFeedback : MonoBehaviour
 
                 AudioSource tempSource = tempAudio.AddComponent<AudioSource>();
                 tempSource.clip = clip;
-                tempSource.volume = 1f;
+                tempSource.volume = 0.6f;
                 tempSource.pitch = Random.Range(0.9f, 1.5f);
                 tempSource.spatialBlend = 0f;
                 tempSource.Play();

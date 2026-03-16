@@ -44,7 +44,7 @@ public class StarCollectFeedback : MonoBehaviour
         if (collectVFXPrefab != null)
         {
             GameObject vfx = Instantiate(collectVFXPrefab, transform.position, Quaternion.identity);
-            Destroy(vfx, 2f);
+            //Destroy(vfx, 2f);
         }
 
         if (collectSFX != null && collectSFX.Length > 0)
@@ -58,7 +58,7 @@ public class StarCollectFeedback : MonoBehaviour
 
                 AudioSource tempSource = tempAudio.AddComponent<AudioSource>();
                 tempSource.clip = clip;
-                tempSource.volume = 1f;
+                tempSource.volume = 0.6f;
                 tempSource.pitch = Random.Range(0.95f, 1.05f);
                 tempSource.spatialBlend = 0f;
                 tempSource.Play();
